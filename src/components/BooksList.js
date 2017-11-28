@@ -3,12 +3,12 @@ import BookShelf from './BookShelf'
 
 function BooksList(props) {
 
-  const { onShelfChange } = props;
+  const { onShelfChange, listOfBooks } = props;
 
   // Categorize the books according to their shelf status.
-  const currentlyReading = props.listOfBooks.filter(book => book.shelf === 'currentlyReading')
-  const read = props.listOfBooks.filter(book => book.shelf === 'read')
-  const wantToRead = props.listOfBooks.filter(book => book.shelf === 'wantToRead')
+  const currentlyReading = listOfBooks.filter(book => book.shelf === 'currentlyReading')
+  const read = listOfBooks.filter(book => book.shelf === 'read')
+  const wantToRead = listOfBooks.filter(book => book.shelf === 'wantToRead')
 
   return (
     <div>

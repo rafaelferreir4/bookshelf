@@ -1,8 +1,8 @@
 import React from 'react'
-import {Link} from 'react-router-dom';
-import * as BooksAPI from '../BooksAPI';
-import Book from './Book';
-import DebounceInput from 'react-debounce-input';
+import { Link } from 'react-router-dom'
+import * as BooksAPI from '../BooksAPI'
+import Book from './Book'
+import DebounceInput from 'react-debounce-input'
 
 class SearchBooks extends React.Component {
   state = {
@@ -10,28 +10,30 @@ class SearchBooks extends React.Component {
   }
 
   search = (e) => {
-    const query = e.target.value;
+    const query = e.target.value
     if (!query) {
-      this.setState({ searchResults: [] });
-      return;
+      this.setState({ searchResults: [] })
+
+      return
     }
 
     BooksAPI.search(query, 20).then(searchResults => {
       if (!searchResults || searchResults.error) {
-        this.setState({searchResults: []});
-        return;
+        this.setState({ searchResults: [] })
+
+        return
       }
 
       searchResults = searchResults.map(book => {
-        const bookOnShelf = this.props.books.find(b => b.id === book.id);
-        book.shelf = bookOnShelf ? bookOnShelf.shelf : 'none';
+        const bookOnShelf = this.props.books.find(b => b.id === book.id)
+        book.shelf = bookOnShelf ? bookOnShelf.shelf : 'none'
 
-        return book;
-      });
+        return book
+      })
 
-      this.setState({ searchResults });
-    });
-  };
+      this.setState({ searchResults })
+    })
+  }
 
   render() {
     return (
